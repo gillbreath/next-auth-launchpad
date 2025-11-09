@@ -1,18 +1,20 @@
 {
   "private": true,
-  "description": "An example project for NextAuth.js with Next.js",
-  "repository": "https://github.com/nextauthjs/next-auth-example.git",
+  "description": "Quick start template to get a best-practice web app up and running",
+  "repository": "https://github.com/gillbreath/next-auth-launchpad",
   "bugs": {
-    "url": "https://github.com/nextauthjs/next-auth/issues"
+    "url": "https://github.com/gillbreath/next-auth-launchpad/issues"
   },
   "homepage": "https://next-auth-example.vercel.app",
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "test": "start-server-and-test dev http://localhost:3000 'cypress open'"
   },
-  "author": "Iain Collins <me@iaincollins.com>",
+  "author": "Elias Carlston <elias@eliascarlston.com>",
   "contributors": [
+    "Iain Collins <me@iaincollins.com>",
     "Balázs Orbán <info@balazsorban.com>",
     "Nico Domino <yo@ndo.dev>",
     "Lluis Agusti <hi@llu.lu>",
@@ -43,7 +45,9 @@
     "@types/react": "^18.2.23",
     "@types/react-dom": "^18.2.8",
     "autoprefixer": "^10.4.15",
+    "cypress": "^15.6.0",
     "postcss": "^8.4.29",
+    "start-server-and-test": "^2.1.2",
     "tailwindcss": "^3.3.3",
     "typescript": "^5.2.2"
   },

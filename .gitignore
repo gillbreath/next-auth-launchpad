@@ -1,3 +1,8 @@
+# ignoring in this repo, bc it is intended as a template/source
+# before you deploy, remove these lines and check in the lock file
+package-lock.json
+
+*.swp
 .DS_Store
 
 node_modules/
@@ -17,4 +22,5 @@ next-env.d.ts
 
 .next
 .vercel
+.env
 .env*.local
