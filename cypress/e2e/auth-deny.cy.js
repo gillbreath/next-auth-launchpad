@@ -10,8 +10,8 @@ describe("Navigation", () => {
   });
 
   it("should not redirect unprotected routes", () => {
-    cy.visit("/about");
-    cy.url().should("eq", baseUrl + "/about");
+    cy.visit("/content/about");
+    cy.url().should("eq", baseUrl + "/content/about");
   });
 
   it("should return 401 from protected apis", () => {

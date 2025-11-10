@@ -2,6 +2,8 @@
 # before you deploy, remove these lines and check in the lock file
 package-lock.json
 
+cypress/screenshots/
+
 *.swp
 .DS_Store
 

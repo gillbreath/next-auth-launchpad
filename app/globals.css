@@ -44,4 +44,9 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  /* https://github.com/tailwindlabs/tailwindcss/issues/18165#issuecomment-2916572995 */
+  a {
+    text-decoration-line: revert;
+  }
 }

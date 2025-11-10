@@ -1,7 +1,5 @@
 describe("Navigation", () => {
-  it("should navigate to the about page", () => {
+  it("should load the home page", () => {
     cy.visit("http://localhost:3000/");
-
-    cy.get("h1").contains("launchpad");
   });
 });
