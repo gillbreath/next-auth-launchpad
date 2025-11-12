@@ -31,7 +31,7 @@ if (
       credentials: {
         password: { label: "Password", type: "password" },
       },
-      authorize: (credentials) => {
+      authorize: (credentials, request) => {
         // use a strong random value:
         // run `$ openssl rand -base64 32` on the command line
         // set in cypress.config.ts and .env
@@ -42,6 +42,8 @@ if (
             image: "https://avatars.githubusercontent.com/u/67470890?s=200&v=4",
           }
         }
+
+        return null;
       },
     })
   )
