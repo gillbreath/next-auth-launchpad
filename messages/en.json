@@ -9,6 +9,12 @@
     "greeting": "Hello {name}!",
     "pagename": "dashboard"
   },
+  "Footer": {
+    "about": "about",
+    "blog": "blog",
+    "contact": "contact",
+    "data": "data"
+  },
   "HomePage": {
     "todoLabel": "Things you can do:",
     "todoList": {
@@ -38,6 +44,10 @@
       }
     },
     "nextAuthDemoLabel": "NextAuth demo (current session)"
+  },
+  "MainNav": {
+    "firstMenuTitle": "Lorem",
+    "secondMenuTitle": "Ipsum"
   },
   "Site": {
     "sitename": "launchpad",

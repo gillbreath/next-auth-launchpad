@@ -16,7 +16,11 @@ import {
 import React from "react"
 import { Button } from "./ui/button"
 
+import { useMessages } from 'next-intl';
+
 export function MainNav() {
+  const t = useMessages()
+
   return (
     <div className="flex items-center gap-4">
       <CustomLink href="/">
@@ -34,7 +38,7 @@ export function MainNav() {
         <NavigationMenuList>
           <NavigationMenuItem>
             <NavigationMenuTrigger className="px-2">
-              Server Side
+              { t.MainNav.firstMenuTitle }
             </NavigationMenuTrigger>
             <NavigationMenuContent>
               <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
@@ -55,7 +59,7 @@ export function MainNav() {
               href="/client-example"
               className={navigationMenuTriggerStyle()}
             >
-              Client Side
+              { t.MainNav.secondMenuTitle }
             </NavigationMenuLink>
           </NavigationMenuItem>
         </NavigationMenuList>

@@ -4,13 +4,18 @@ import { Inter } from "next/font/google"
 import Footer from "@/components/footer"
 import Header from "@/components/header"
 import { NextIntlClientProvider } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 
 const inter = Inter({ subsets: ["latin"] })
 
-export const metadata: Metadata = {
-  title: "NextAuth.js Example",
-  description:
-    "This is an example site to demonstrate how to use NextAuth.js for authentication",
+export async function generateMetadata(): Promise<Metadata> {
+  const t = {
+    Site: await getTranslations('Site')
+  };
+  return {
+    title: t.Site('sitename'),
+    description: t.Site('tagline')
+  }
 }
 
 export default function RootLayout({ children }: React.PropsWithChildren) {
@@ -18,11 +23,13 @@ export default function RootLayout({ children }: React.PropsWithChildren) {
     <html lang="en">
       <body className={inter.className}>
         <div className="flex h-full min-h-screen w-full flex-col justify-between">
-          <Header />
-          <main className="mx-auto w-full max-w-3xl flex-auto px-4 py-4 sm:px-6 md:py-6">
-            <NextIntlClientProvider>{children}</NextIntlClientProvider>
-          </main>
-          <Footer />
+          <NextIntlClientProvider>
+            <Header />
+            <main className="mx-auto w-full max-w-3xl flex-auto px-4 py-4 sm:px-6 md:py-6">
+              {children}
+            </main>
+            <Footer />
+          </NextIntlClientProvider>
         </div>
       </body>
     </html>
