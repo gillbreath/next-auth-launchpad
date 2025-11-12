@@ -9,6 +9,11 @@ Based on:
    - ISC License copyright Balázs Orbán
    - other contributors: Iain Collins, Nico Domino, Lluis Agusti, Thang Huu Vu
 
+## Security Disclaimer
+Security is a deep subject and critically important. This project is forked from NextAuth's example code, and every attempt has been made to maintain or increase security.
+
+However, it is *strongly recommended* to have a penetration test performed by an experienced security firm before going live with any app forked from this code.
+
 ## Getting Started
 
 ### 1. Clone the repository and install dependencies
@@ -22,16 +27,16 @@ npm install
 ### 2. Configure your local environment
 
 Copy the .env.local.example file in this directory to .env.local or .env
-- note ".local" is a Next.js convention
+- Fill in the details for the env vars
+- note, ".local" is a Next.js convention
 - don't check these files in - both of those file names are in .gitignore to help
-- Add details
 
-### 3. Start the application
 
-To run your site locally, use:
+### 3. Run tests and start the application
 
+This command does both:
 ```
-npm run dev
+npm run test
 ```
 
 ### 5. Preparing for Production
