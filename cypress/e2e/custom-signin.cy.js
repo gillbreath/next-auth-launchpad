@@ -2,10 +2,10 @@ describe("Navigation", () => {
   const baseUrl = Cypress.config().baseUrl;
 
   it("should redirect after successful auth", () => {
-    cy.visit("/signin");
-    cy.get("#input-email-for-insecure-testing-provider").type("test@example.com");
-    cy.get("#input-password-for-insecure-testing-provider").type("password");
-    cy.get(`button[type="submit"]`)
+    cy.visit("/login");
+    const insecureTestingPassword = Cypress.env("INSECURE_TESTING_PASSWORD");
+    cy.get("#input-password-for-insecure-testing-provider").type(insecureTestingPassword);
+    cy.get("#submit-for-insecure-testing-provider")
       .click()
       .then(()=>{
 

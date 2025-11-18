@@ -1,9 +1,10 @@
 import NextAuth from "next-auth"
 import "next-auth/jwt"
+import type { Provider } from "next-auth/providers";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
 
-const authProviders = [];
+const authProviders: Provider[] = [];
 
 import { createStorage } from "unstorage"
 import memoryDriver from "unstorage/drivers/memory"
@@ -20,10 +21,12 @@ const storage = createStorage({
     : memoryDriver(),
 })
 
-if (
+const insecureCredentialsProviderAllowedForTesting = (
   process.env.NODE_ENV === "development"
   && process.env.INSECURE_TESTING_PROVIDER_ON === "true"
-) {
+);
+
+if (insecureCredentialsProviderAllowedForTesting) {
   authProviders.push(
     CredentialsProvider({
       id: "insecure-testing",
@@ -55,15 +58,22 @@ authProviders.push(
   })
 );
 
+let pages = {
+  signIn: "/login",
+};
+
 export const { handlers, auth, signIn, signOut } = NextAuth({
   debug: !!process.env.AUTH_DEBUG,
   theme: { logo: "https://authjs.dev/img/logo-sm.png" },
   adapter: UnstorageAdapter(storage),
+  pages,
   providers: authProviders,
   basePath: "/auth",
   session: { strategy: "jwt" },
   callbacks: {
     authorized({ request, auth }) {
+      // TODO: un/protected route lookup functions, then set default false
+      // TODO: handle auth.message (server config)
       const { pathname } = request.nextUrl
       if (pathname === "/dashboard") return !!auth
       return true
@@ -95,3 +105,20 @@ declare module "next-auth/jwt" {
     accessToken?: string
   }
 }
+
+// providerMap for convenience when dynamically rendering
+export const providerMap = authProviders
+  .map((provider: Provider) => {
+    if (typeof provider === "function") {
+      const providerData = provider()
+      return { id: providerData.id, name: providerData.name }
+    } else {
+      return { id: provider.id, name: provider.name }
+    }
+  })
+  .filter((provider) => {
+    if (insecureCredentialsProviderAllowedForTesting) {
+      return true;
+    }
+    return provider.id !== "insecure-testing";
+  })
