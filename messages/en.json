@@ -49,6 +49,12 @@
     "firstMenuTitle": "Lorem",
     "secondMenuTitle": "Ipsum"
   },
+  "SignInPage": {
+    "pagename": "login",
+    "testingPost": "/login",
+    "_defaultPagename": "auth/signin",
+    "_defaultTestingPost": "/auth/callback/insecure-testing"
+  },
   "Site": {
     "sitename": "launchpad",
     "tagline": "Quick start template to get a best-practice web app up and running"

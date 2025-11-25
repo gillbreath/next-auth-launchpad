@@ -1,11 +1,18 @@
-describe("Navigation", () => {
+import messagesEn from "../../messages/en.json";
+
+describe("auth-deny", () => {
   const baseUrl = Cypress.config().baseUrl;
 
+  const dashboardPagename = messagesEn.DashboardPage.pagename;
+  const dashboardPath = "/" + dashboardPagename;
+  const signInPagename = messagesEn.SignInPage.pagename;
+  const signInPath = "/" + signInPagename;
+
   it("should redirect from protected routes", () => {
-    cy.visit("/dashboard");
+    cy.visit(dashboardPath);
     cy.url().should(
       "eq",
-      baseUrl + "/auth/signin?callbackUrl=http%3A%2F%2Flocalhost%3A3000%2Fdashboard",
+      baseUrl + signInPath + "?callbackUrl=http%3A%2F%2Flocalhost%3A3000%2F" + dashboardPagename,
     );
   });
 
