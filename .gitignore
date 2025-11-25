@@ -3,6 +3,7 @@
 package-lock.json
 
 cypress/screenshots/
+cypress.env.json
 
 *.swp
 .DS_Store

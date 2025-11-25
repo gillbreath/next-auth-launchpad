@@ -6,7 +6,8 @@ export default defineConfig({
     supportFile: false,
   },
   env: {
-    // set the same value here as in .env
+    // set this value in cypress.env.json (which is .gitignored)
+    // use the same value as .env for the local server
     // use a strong random value:
     // run `$ openssl rand -base64 32` (or similar) on the command line
     "INSECURE_TESTING_PASSWORD": ""
