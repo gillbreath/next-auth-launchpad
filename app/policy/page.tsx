@@ -28,5 +28,5 @@ export default function PolicyPage() {
         </p>
       </section>
     </div>
-  )
+  );
 }

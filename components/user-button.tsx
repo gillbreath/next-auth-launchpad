@@ -1,18 +1,25 @@
-import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar"
-import { Button } from "./ui/button"
-import { auth } from "auth"
+import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
+import { Button } from "./ui/button";
+import { auth } from "auth";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuTrigger,
-} from "./ui/dropdown-menu"
-import { SignIn, SignOut } from "./auth-components"
+} from "./ui/dropdown-menu";
+import { SignIn, SignOut } from "./auth-components";
 
 export default async function UserButton() {
-  const session = await auth()
-  if (!session?.user) return <SignIn />
+  const session = await auth();
+  if (!session?.user) return <SignIn />;
+  // TODO: maybe make AvatarFallback show user initials, random color etc
+  const avatarDisplay = session.user.image ? (
+    <AvatarImage src={session.user.image} alt={session.user.name ?? ""} />
+  ) : (
+    <AvatarFallback />
+  );
+
   return (
     <div className="flex items-center gap-2">
       <span className="hidden text-sm sm:inline-flex">
@@ -21,15 +28,7 @@ export default async function UserButton() {
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant="ghost" className="relative h-8 w-8 rounded-full">
-            <Avatar className="h-8 w-8">
-              <AvatarImage
-                src={
-                  session.user.image ??
-                  `https://api.dicebear.com/9.x/thumbs/svg?seed=${Math.floor(Math.random() * 100000) + 1}&randomizeIds=true`
-                }
-                alt={session.user.name ?? ""}
-              />
-            </Avatar>
+            <Avatar className="h-8 w-8">{avatarDisplay}</Avatar>
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent className="w-56" align="end" forceMount>
@@ -49,5 +48,5 @@ export default async function UserButton() {
         </DropdownMenuContent>
       </DropdownMenu>
     </div>
-  )
+  );
 }

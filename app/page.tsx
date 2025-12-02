@@ -1,12 +1,10 @@
-import CustomLink from "@/components/custom-link"
-import { auth } from "auth"
-import { getTranslations } from 'next-intl/server';
+import CustomLink from "@/components/custom-link";
+import { getTranslations } from "next-intl/server";
 
 export default async function Index() {
-  const session = await auth()
   const t = {
-    HomePage: await getTranslations('HomePage'),
-    Site: await getTranslations('Site')
+    HomePage: await getTranslations("HomePage"),
+    Site: await getTranslations("Site"),
   };
   const todoListLinks = [
     {
@@ -31,21 +29,26 @@ export default async function Index() {
 
   return (
     <div className="flex flex-col gap-6">
-      <h1 className="text-3xl font-bold">{ t.Site('sitename') }</h1>
+      <h1 className="text-3xl font-bold">{t.Site("sitename")}</h1>
       <div>
-        { t.Site("tagline") }{ ". " }<br/>
-        <br/>
-        { t.HomePage("todoLabel") }<br/>
+        {t.Site("tagline")}
+        {". "}
+        <br />
+        <br />
+        {t.HomePage("todoLabel")}
+        <br />
         <ul>
-        { todoListLinks.map((todo, index) => (
-          <li key={ index }>
-            <span>{ todo.preText }</span>
-            <CustomLink href={ todo.linkLocation }>{ todo.linkText }</CustomLink>{" "}
-            <span>{ todo.postText }</span>
-          </li>
-        )) }
+          {todoListLinks.map((todo, index) => (
+            <li key={index}>
+              <span>{todo.preText}</span>
+              <CustomLink href={todo.linkLocation}>
+                {todo.linkText}
+              </CustomLink>{" "}
+              <span>{todo.postText}</span>
+            </li>
+          ))}
         </ul>
       </div>
     </div>
-  )
+  );
 }

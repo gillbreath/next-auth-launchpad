@@ -10,6 +10,6 @@ export default defineConfig({
     // use the same value as .env for the local server
     // use a strong random value:
     // run `$ openssl rand -base64 32` (or similar) on the command line
-    "INSECURE_TESTING_PASSWORD": ""
-  }
+    INSECURE_TESTING_PASSWORD: "",
+  },
 });

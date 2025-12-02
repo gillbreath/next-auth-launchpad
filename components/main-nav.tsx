@@ -1,9 +1,9 @@
-"use client"
+"use client";
 
-import Image from "next/image"
+import Image from "next/image";
 
-import { cn } from "@/lib/utils"
-import CustomLink from "./custom-link"
+import { cn } from "@/lib/utils";
+import CustomLink from "./custom-link";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -12,14 +12,14 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
-} from "./ui/navigation-menu"
-import React from "react"
-import { Button } from "./ui/button"
+} from "./ui/navigation-menu";
+import React from "react";
+import { Button } from "./ui/button";
 
-import { useMessages } from 'next-intl';
+import { useMessages } from "next-intl";
 
 export function MainNav() {
-  const t = useMessages()
+  const t = useMessages();
 
   return (
     <div className="flex items-center gap-4">
@@ -38,7 +38,10 @@ export function MainNav() {
         <NavigationMenuList>
           <NavigationMenuItem>
             <NavigationMenuTrigger className="px-2">
-              { t.MainNav.firstMenuTitle }
+              {
+                // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+                t.MainNav.firstMenuTitle
+              }
             </NavigationMenuTrigger>
             <NavigationMenuContent>
               <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
@@ -59,13 +62,16 @@ export function MainNav() {
               href="/client-example"
               className={navigationMenuTriggerStyle()}
             >
-              { t.MainNav.secondMenuTitle }
+              {
+                // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+                t.MainNav.secondMenuTitle
+              }
             </NavigationMenuLink>
           </NavigationMenuItem>
         </NavigationMenuList>
       </NavigationMenu>
     </div>
-  )
+  );
 }
 
 const ListItem = React.forwardRef<
@@ -79,7 +85,7 @@ const ListItem = React.forwardRef<
           ref={ref}
           className={cn(
             "hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors",
-            className
+            className,
           )}
           {...props}
         >
@@ -90,6 +96,6 @@ const ListItem = React.forwardRef<
         </a>
       </NavigationMenuLink>
     </li>
-  )
-})
-ListItem.displayName = "ListItem"
+  );
+});
+ListItem.displayName = "ListItem";

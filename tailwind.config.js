@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+/*global module, require */
+
 module.exports = {
   darkMode: "selector",
   content: [
@@ -73,4 +75,4 @@ module.exports = {
     },
   },
   plugins: [require("tailwindcss-animate")],
-}
+};

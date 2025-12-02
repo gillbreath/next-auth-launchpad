@@ -16,30 +16,36 @@ describe("auth-allow", () => {
   // if using auth.ts > pages property, then callback gets set in cookie
   // if using default Next-Auth, callback not set in cookie
   // (to switch, change the _default values in messages/en.json, and delete auth.ts > pages property)
-  const cookieCallback = (messagesEn.SignInPage.testingPost === "/auth/callback/insecure-testing") ?
-    "" :
-    "%2F" + dashboardPagename;
+  const cookieCallback =
+    messagesEn.SignInPage.testingPost === "/auth/callback/insecure-testing"
+      ? ""
+      : "%2F" + dashboardPagename;
 
-
-  beforeEach(()=>{
+  beforeEach(() => {
     // aliases are reset after each test
     cy.intercept("POST", signInTestingPost).as("postLogin");
 
     cy.visit(signInPath);
-    cy.get("#input-password-for-insecure-testing-provider").type(insecureTestingPassword);
+    cy.get("#input-password-for-insecure-testing-provider").type(
+      insecureTestingPassword,
+    );
     // needs to be #submitButton so that tests will work with both built-in next-auth and custom signin pages
     // e.g., /auth/signin and auth.ts > "pages" config property > /login
     cy.get("#submitButton").click();
   });
 
   it("should have a cookie after successful auth", () => {
-    cy.wait("@postLogin").then(req => {
-      cy.getCookie("authjs.callback-url").should("have.property", "value", "http%3A%2F%2Flocalhost%3A3000" + cookieCallback);
+    cy.wait("@postLogin").then(() => {
+      cy.getCookie("authjs.callback-url").should(
+        "have.property",
+        "value",
+        "http%3A%2F%2Flocalhost%3A3000" + cookieCallback,
+      );
     });
   });
 
   it("should return 200 from protected apis after successful auth", () => {
-    cy.wait("@postLogin").then(req => {
+    cy.wait("@postLogin").then(() => {
       cy.request({
         method: "GET",
         url: "/api/protected",
@@ -51,10 +57,9 @@ describe("auth-allow", () => {
   });
 
   it("should not redirect protected routes after successful auth", () => {
-    cy.wait("@postLogin").then(req => {
+    cy.wait("@postLogin").then(() => {
       cy.visit("/dashboard");
       cy.url().should("eq", baseUrl + "/dashboard");
     });
   });
-
 });

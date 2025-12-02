@@ -7,12 +7,16 @@ describe("auth-deny", () => {
   const dashboardPath = "/" + dashboardPagename;
   const signInPagename = messagesEn.SignInPage.pagename;
   const signInPath = "/" + signInPagename;
+  const signOutPath = "/auth/signout";
 
   it("should redirect from protected routes", () => {
     cy.visit(dashboardPath);
     cy.url().should(
       "eq",
-      baseUrl + signInPath + "?callbackUrl=http%3A%2F%2Flocalhost%3A3000%2F" + dashboardPagename,
+      baseUrl +
+        signInPath +
+        "?callbackUrl=http%3A%2F%2Flocalhost%3A3000%2F" +
+        dashboardPagename,
     );
   });
 
@@ -32,9 +36,12 @@ describe("auth-deny", () => {
   });
 
   it("should redirect after logout", () => {
+    cy.intercept("POST", signOutPath).as("signOut");
+
     cy.visit("/auth/signout");
     cy.get("#submitButton")
-      .click()
+      .click();
+    cy.wait("@signOut")
       .then(() => {
         cy.url().should("eq", baseUrl + "/");
       });

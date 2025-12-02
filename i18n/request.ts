@@ -1,11 +1,12 @@
-import {getRequestConfig} from 'next-intl/server';
+import { getRequestConfig } from "next-intl/server";
 
 export default getRequestConfig(async () => {
   // Static for now, we'll change this later
-  const locale = 'en';
+  const locale = "en";
 
   return {
     locale,
-    messages: (await import(`../messages/${locale}.json`)).default
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
+    messages: (await import(`../messages/${locale}.json`)).default,
   };
 });

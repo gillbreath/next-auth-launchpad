@@ -1,19 +1,16 @@
-import CustomLink from "@/components/custom-link"
-import { auth } from "auth"
-import { getTranslations } from 'next-intl/server';
+import { getTranslations } from "next-intl/server";
 
 export default async function Index() {
-  const session = await auth()
   const t = {
-    DashboardPage: await getTranslations('DashboardPage')
+    DashboardPage: await getTranslations("DashboardPage"),
   };
 
   return (
     <div className="flex flex-col gap-6">
-      <h1 className="text-3xl font-bold">{ t.DashboardPage('pagename') }</h1>
+      <h1 className="text-3xl font-bold">{t.DashboardPage("pagename")}</h1>
       <div>
-        <p>{ t.DashboardPage('greeting', { name: "Jane" }) }</p>
+        <p>{t.DashboardPage("greeting", { name: "Jane" })}</p>
       </div>
     </div>
-  )
+  );
 }

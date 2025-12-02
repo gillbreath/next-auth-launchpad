@@ -1,21 +1,21 @@
-import "./globals.css"
-import type { Metadata } from "next"
-import { Inter } from "next/font/google"
-import Footer from "@/components/footer"
-import Header from "@/components/header"
-import { NextIntlClientProvider } from 'next-intl';
-import { getTranslations } from 'next-intl/server';
+import "./globals.css";
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+import Footer from "@/components/footer";
+import Header from "@/components/header";
+import { NextIntlClientProvider } from "next-intl";
+import { getTranslations } from "next-intl/server";
 
-const inter = Inter({ subsets: ["latin"] })
+const inter = Inter({ subsets: ["latin"] });
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = {
-    Site: await getTranslations('Site')
+    Site: await getTranslations("Site"),
   };
   return {
-    title: t.Site('sitename'),
-    description: t.Site('tagline')
-  }
+    title: t.Site("sitename"),
+    description: t.Site("tagline"),
+  };
 }
 
 export default function RootLayout({ children }: React.PropsWithChildren) {
@@ -33,5 +33,5 @@ export default function RootLayout({ children }: React.PropsWithChildren) {
         </div>
       </body>
     </html>
-  )
+  );
 }
