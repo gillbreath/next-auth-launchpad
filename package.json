@@ -8,8 +8,9 @@
   "homepage": "https://next-auth-example.vercel.app",
   "scripts": {
     "build": "next build",
+    "clean": "npm run format && npm run lint",
     "dev": "next",
-    "format": "prettier",
+    "format": "prettier -w .",
     "lint": "eslint",
     "start": "next start",
     "test": "start-server-and-test dev http://localhost:3000 'cypress run'",

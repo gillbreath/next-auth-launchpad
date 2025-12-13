@@ -39,11 +39,9 @@ describe("auth-deny", () => {
     cy.intercept("POST", signOutPath).as("signOut");
 
     cy.visit("/auth/signout");
-    cy.get("#submitButton")
-      .click();
-    cy.wait("@signOut")
-      .then(() => {
-        cy.url().should("eq", baseUrl + "/");
-      });
+    cy.get("#submitButton").click();
+    cy.wait("@signOut").then(() => {
+      cy.url().should("eq", baseUrl + "/");
+    });
   });
 });

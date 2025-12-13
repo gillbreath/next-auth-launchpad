@@ -17,11 +17,9 @@ describe("custom-signin", () => {
     cy.get("#input-password-for-insecure-testing-provider").type(
       insecureTestingPassword,
     );
-    cy.get("#submitButton")
-      .click()
-    cy.wait("@postLogin")
-      .then(() => {
-        cy.url().should("eq", baseUrl + dashboardPath);
-      });
+    cy.get("#submitButton").click();
+    cy.wait("@postLogin").then(() => {
+      cy.url().should("eq", baseUrl + dashboardPath);
+    });
   });
 });
