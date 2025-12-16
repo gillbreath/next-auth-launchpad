@@ -1,6 +1,7 @@
 import NextAuth from "next-auth";
 import "next-auth/jwt";
 import type { Provider } from "next-auth/providers";
+import { insecureCredentialsProviderAllowedForTesting } from "@/lib/utils.env-vars.ts";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
 
@@ -21,11 +22,7 @@ const storage = createStorage({
     : memoryDriver(),
 });
 
-const insecureCredentialsProviderAllowedForTesting =
-  process.env.INSECURE_TESTING_PROVIDER_ON === "true" &&
-  process.env.NODE_ENV === "development";
-
-if (insecureCredentialsProviderAllowedForTesting) {
+if (insecureCredentialsProviderAllowedForTesting()) {
   authProviders.push(
     CredentialsProvider({
       id: "insecure-testing",
@@ -130,7 +127,7 @@ export const providerMap = authProviders
     }
   })
   .filter((provider) => {
-    if (insecureCredentialsProviderAllowedForTesting) {
+    if (insecureCredentialsProviderAllowedForTesting()) {
       return true;
     }
     return provider.id !== "insecure-testing";
