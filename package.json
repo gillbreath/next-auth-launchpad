@@ -12,6 +12,7 @@
     "dev": "next",
     "format": "prettier -w .",
     "lint": "eslint",
+    "prep": "npm run clean && npm run test && npm run build",
     "start": "next start",
     "test": "start-server-and-test dev http://localhost:3000 'cypress run'",
     "test-interactive": "start-server-and-test dev http://localhost:3000 'cypress open'"
