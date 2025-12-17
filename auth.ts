@@ -1,7 +1,7 @@
 import NextAuth from "next-auth";
 import "next-auth/jwt";
 import type { Provider } from "next-auth/providers";
-import { insecureCredentialsProviderAllowedForTesting } from "@/lib/utils.env-vars.ts";
+import { insecureCredentialsProviderAllowedForTesting } from "@/lib/utils.env-vars";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
 

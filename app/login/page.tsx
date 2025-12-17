@@ -1,6 +1,7 @@
 import { signIn, providerMap } from "@/auth";
 import { AuthError } from "next-auth";
-import { insecureCredentialsProviderAllowedForTesting } from "@/lib/utils.env-vars.ts";
+import { insecureCredentialsProviderAllowedForTesting } from "@/lib/utils.env-vars";
+import pathData from "@/messages/en.json";
 
 export default function SignInPage(props: {
   searchParams: { callbackUrl: string | undefined };
@@ -13,9 +14,8 @@ export default function SignInPage(props: {
           action={async () => {
             "use server";
             try {
-              const { callbackUrl } = props.searchParams;
               const signInOptions = {
-                redirectTo: callbackUrl ?? "/dashboard",
+                redirectTo: pathData.DashboardPage.pagename,
               };
               await signIn(provider.id, signInOptions);
             } catch (error) {
