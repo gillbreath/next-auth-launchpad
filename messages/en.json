@@ -52,11 +52,13 @@
   "SignInPage": {
     "pagename": "login",
     "testingPost": "/login",
+    "optionsHeader": "Sign In",
+    "submitButtonPrefix": "Sign in using",
     "_defaultPagename": "auth/signin",
     "_defaultTestingPost": "/auth/callback/insecure-testing"
   },
   "Site": {
     "sitename": "launchpad",
-    "tagline": "Quick start template to get a best-practice web app up and running"
+    "tagline": "Common tools for web apps"
   }
 }

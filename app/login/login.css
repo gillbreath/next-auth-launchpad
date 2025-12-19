@@ -1,0 +1,30 @@
+h2,
+h3 {
+  font-weight: 500;
+}
+h2 {
+  font-size: 2em;
+}
+h3 {
+  font-size: 1.25em;
+}
+main {
+  background-image: url("/login-background.png");
+  background-size: 100% 100%;
+}
+.branding,
+.pills.wrapper {
+  flex: 1 1 0;
+  max-width: 30em;
+  min-width: 10em;
+}
+.branding img {
+  width: 80%;
+}
+.login {
+  margin-top: 10%;
+}
+.pills .border {
+  border-radius: 12px;
+  border: 2px solid var(--grey-300, #e0e0e0);
+}
