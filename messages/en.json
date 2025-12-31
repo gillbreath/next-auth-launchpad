@@ -54,6 +54,7 @@
     "testingPost": "/login",
     "optionsHeader": "Sign In",
     "submitButtonPrefix": "Sign in using",
+    "legalLinkText": "Legal stuff",
     "_defaultPagename": "auth/signin",
     "_defaultTestingPost": "/auth/callback/insecure-testing"
   },

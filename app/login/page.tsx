@@ -11,11 +11,13 @@ export default async function SignInPage() {
     Site: await getTranslations("Site"),
   };
   return (
-    <div className="login flex flex-row gap-4 w-full justify-center">
+    <div className="login w-full flex flex-col items-center lg:flex-row gap-8 lg:justify-center">
       <div className="branding p-5">
-        <img src="/logo.png" />
-        <h1>{t.Site("sitename")}</h1>
-        <h2>{t.Site("tagline")}</h2>
+        <span className="logo-sitename flex flex-row justify-between items-center mb-2">
+          <img src="/logo.png" />
+          <h1>{t.Site("sitename")}</h1>
+        </span>
+        <h2 className="text-center">{t.Site("tagline")}</h2>
       </div>
       <div className="pills wrapper">
         <div className="border p-5">
@@ -23,12 +25,12 @@ export default async function SignInPage() {
           {Object.values(providerMap).map((provider) => (
             <ProviderMapForm provider={provider}></ProviderMapForm>
           ))}
+          {insecureCredentialsProviderAllowedForTesting() ? (
+            <InsecureTestingProvider></InsecureTestingProvider>
+          ) : undefined}
         </div>
-        <a href="#">Disclaimer</a>
+        <a href="#">{t.SignInPage("legalLinkText")}</a>
       </div>
-      {insecureCredentialsProviderAllowedForTesting() ? (
-        <InsecureTestingProvider></InsecureTestingProvider>
-      ) : undefined}
       <div className="fixed bottom-0 left-0 w-full">&nbsp;</div>
     </div>
   );

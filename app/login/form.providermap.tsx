@@ -9,7 +9,6 @@ export default async function SignInPage(props: {
     name: string;
   };
 }) {
-  console.log("props", props);
   const t = {
     SignInPage: await getTranslations("SignInPage"),
   };

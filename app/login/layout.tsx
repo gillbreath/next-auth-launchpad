@@ -3,9 +3,9 @@ import "./login.css";
 export default function LoginLayout({ children }: React.PropsWithChildren) {
   return (
     <body>
-      <div className="flex h-full min-h-screen w-full flex-col justify-between">
+      <main className="flex h-full min-h-screen w-full flex-col justify-between">
         {children}
-      </div>
+      </main>
     </body>
   );
 }

@@ -3,13 +3,13 @@ h3 {
   font-weight: 500;
 }
 h2 {
-  font-size: 2em;
+  font-size: 1.4em;
 }
 h3 {
   font-size: 1.25em;
 }
 main {
-  background-image: url("/login-background.png");
+  background: linear-gradient(white 80%, darkgray);
   background-size: 100% 100%;
 }
 .branding,
@@ -19,7 +19,10 @@ main {
   min-width: 10em;
 }
 .branding img {
-  width: 80%;
+  width: 40%;
+}
+.logo-sitename h1 {
+  font-size: 3.5em;
 }
 .login {
   margin-top: 10%;
