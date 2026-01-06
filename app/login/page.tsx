@@ -11,19 +11,22 @@ export default async function SignInPage() {
     Site: await getTranslations("Site"),
   };
   return (
-    <div className="login w-full flex flex-col items-center lg:flex-row gap-8 lg:justify-center">
-      <div className="branding p-5">
+    <div className="login flex flex-col gap-8 items-center lg:flex-row lg:justify-center max-w-[1000px] mt-[10%] w-2/3">
+      <div className="branding flex-1 p-5">
         <span className="logo-sitename flex flex-row justify-between items-center mb-2">
           <img src="/logo.png" />
           <h1>{t.Site("sitename")}</h1>
         </span>
         <h2 className="text-center">{t.Site("tagline")}</h2>
       </div>
-      <div className="pills wrapper">
+      <div className="pills wrapper flex-1">
         <div className="border p-5">
           <h2>{t.SignInPage("optionsHeader")}</h2>
           {Object.values(providerMap).map((provider) => (
-            <ProviderMapForm provider={provider}></ProviderMapForm>
+            <ProviderMapForm
+              provider={provider}
+              key={provider.id}
+            ></ProviderMapForm>
           ))}
           {insecureCredentialsProviderAllowedForTesting() ? (
             <InsecureTestingProvider></InsecureTestingProvider>

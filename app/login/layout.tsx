@@ -3,7 +3,7 @@ import "./login.css";
 export default function LoginLayout({ children }: React.PropsWithChildren) {
   return (
     <body>
-      <main className="flex h-full min-h-screen w-full flex-col justify-between">
+      <main className="flex flex-col h-full items-center justify-between min-h-screen w-full">
         {children}
       </main>
     </body>

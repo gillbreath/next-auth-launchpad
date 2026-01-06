@@ -4,8 +4,10 @@ import type { Provider } from "next-auth/providers";
 import { insecureCredentialsProviderAllowedForTesting } from "@/lib/utils.env-vars";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
+import Resend from "next-auth/providers/resend";
 
 const authProviders: Provider[] = [];
+authProviders.push(Resend);
 
 import { createStorage } from "unstorage";
 import memoryDriver from "unstorage/drivers/memory";

@@ -9,13 +9,13 @@
   "scripts": {
     "build": "next build",
     "clean": "npm run format && npm run lint",
-    "dev": "next",
+    "dev": "npm run prep && next",
     "format": "prettier -w .",
     "lint": "eslint",
     "prep": "npm run clean && npm run test && npm run build",
     "start": "next start",
-    "test": "start-server-and-test dev http://localhost:3000 'cypress run'",
-    "test-interactive": "start-server-and-test dev http://localhost:3000 'cypress open'"
+    "test": "start-server-and-test next http://localhost:3000 'cypress run'",
+    "test-interactive": "start-server-and-test next http://localhost:3000 'cypress open'"
   },
   "author": "Elias Carlston <elias@eliascarlston.com>",
   "contributors": [

@@ -15,8 +15,12 @@ export default async function SignInPage(props: {
   const signInOptions = {
     redirectTo: "/" + pathData.DashboardPage.pagename,
   };
+  const providerNameAlias = ["Resend"].includes(props.provider.name)
+    ? "email"
+    : props.provider.name;
   return (
     <form
+      className="provider border flex flex-row items-center mb-4 p-3"
       key={props.provider.id}
       action={async () => {
         "use server";
@@ -39,9 +43,13 @@ export default async function SignInPage(props: {
         }
       }}
     >
-      <button type="submit">
+      <button
+        type="submit"
+        className="flex flex-row items-center justify-items-stretch w-full"
+      >
+        <img src={"/ui/icon-login-" + providerNameAlias + ".png"} />
         <span>
-          {t.SignInPage("submitButtonPrefix")} {props.provider.name}
+          {t.SignInPage("submitButtonPrefix")} {providerNameAlias}
         </span>
       </button>
     </form>
