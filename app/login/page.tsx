@@ -11,7 +11,7 @@ export default async function SignInPage() {
     Site: await getTranslations("Site"),
   };
   return (
-    <div className="login flex flex-col gap-8 items-center lg:flex-row lg:justify-center max-w-[1000px] mt-[10%] w-2/3">
+    <div className="flex flex-col gap-8 items-center lg:flex-row lg:justify-center max-w-[1000px] mt-[10%] w-2/3">
       <div className="branding flex-1 p-5">
         <span className="logo-sitename flex flex-row justify-between items-center mb-2">
           <img src="/logo.png" />
@@ -19,18 +19,20 @@ export default async function SignInPage() {
         </span>
         <h2 className="text-center">{t.Site("tagline")}</h2>
       </div>
-      <div className="pills wrapper flex-1">
-        <div className="border p-5">
+      <div className="legal-link-wrapper flex-1 w-full">
+        <div className="border p-8">
           <h2>{t.SignInPage("optionsHeader")}</h2>
-          {Object.values(providerMap).map((provider) => (
-            <ProviderMapForm
-              provider={provider}
-              key={provider.id}
-            ></ProviderMapForm>
-          ))}
-          {insecureCredentialsProviderAllowedForTesting() ? (
-            <InsecureTestingProvider></InsecureTestingProvider>
-          ) : undefined}
+          <div className=" flex flex-col justify-center min-h-[15em]">
+            {Object.values(providerMap).map((provider) => (
+              <ProviderMapForm
+                provider={provider}
+                key={provider.id}
+              ></ProviderMapForm>
+            ))}
+            {insecureCredentialsProviderAllowedForTesting() ? (
+              <InsecureTestingProvider></InsecureTestingProvider>
+            ) : undefined}
+          </div>
         </div>
         <a href="#">{t.SignInPage("legalLinkText")}</a>
       </div>

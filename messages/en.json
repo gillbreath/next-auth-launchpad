@@ -6,7 +6,8 @@
     }
   },
   "DashboardPage": {
-    "greeting": "Hello {name}!",
+    "label": "Items",
+    "tagline": "products, emails, to-dos etc",
     "pagename": "dashboard"
   },
   "Footer": {

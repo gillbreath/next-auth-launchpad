@@ -8,19 +8,19 @@ h2 {
 h3 {
   font-size: 1.25em;
 }
-main {
+.login {
   background: linear-gradient(white 80%, darkgray);
   background-size: 100% 100%;
+}
+.border {
+  border-radius: 1em;
+  border: 2px solid var(--grey-300, #e0e0e0);
 }
 .branding img {
   width: 40%;
 }
 .logo-sitename h1 {
   font-size: 3.5em;
-}
-.pills .border {
-  border-radius: 1em;
-  border: 2px solid var(--grey-300, #e0e0e0);
 }
 .provider.border {
   border-radius: 3em;

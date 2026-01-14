@@ -7,9 +7,9 @@ export default async function Index() {
 
   return (
     <div className="flex flex-col gap-6">
-      <h1 className="text-3xl font-bold">{t.DashboardPage("pagename")}</h1>
       <div>
-        <p>{t.DashboardPage("greeting", { name: "Jane" })}</p>
+        <h2 className="text-xl font-bold">{t.DashboardPage("label")}</h2>
+        <h3 className="text-l">{t.DashboardPage("tagline")}</h3>
       </div>
     </div>
   );
